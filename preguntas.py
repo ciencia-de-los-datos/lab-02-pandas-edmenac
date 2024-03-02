@@ -143,9 +143,10 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    tbl0["suma"] = tbl0["_c0"] + tbl0["_c2"]
+    tabla_08 = tbl0.copy()
+    tabla_08["suma"] = tabla_08["_c0"] + tabla_08["_c2"]
 
-    return tbl0
+    return tabla_08
 
 
 def pregunta_09():
@@ -163,12 +164,10 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    tabla = tbl0.copy()
-    # tabla['year'] = tabla['_c3'].str[:4].astype(int)
-    # tbl0["year"] = tbl0["_c3"].str[:4]
-    tabla["year"] = tabla["_c3"].str.split("-").str.get(0)
+    tabla_09 = tbl0.copy()
+    tabla_09["year"] = tabla_09["_c3"].str[:4]
     
-    return tabla
+    return tabla_09
 
 
 def pregunta_10():
@@ -186,11 +185,11 @@ def pregunta_10():
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     tbl0["_c2"] = tbl0["_c2"].astype(str)
-    tabla = tbl0.groupby("_c1")["_c2"].apply(lambda x: ":".join(x)).reset_index()
-    tabla["_c2"] = tabla["_c2"].str.split(":").apply(sorted).apply(lambda x: ":".join(x))
-    tabla.set_index("_c1", inplace=True)
+    tabla_10 = tbl0.groupby("_c1")["_c2"].apply(lambda x: ":".join(x)).reset_index()
+    tabla_10["_c2"] = tabla_10["_c2"].str.split(":").apply(sorted).apply(lambda x: ":".join(x))
+    tabla_10.set_index("_c1", inplace=True)
 
-    return tabla
+    return tabla_10
 
 
 def pregunta_11():
@@ -210,10 +209,10 @@ def pregunta_11():
     39   39    a,d,f
     """
     tbl1["_c4"] = tbl1["_c4"].astype(str)
-    tabla = tbl1.groupby("_c0")["_c4"].apply(lambda x: ",".join(x)).reset_index()
-    tabla["_c4"] = tabla["_c4"].str.split(",").apply(sorted).apply(lambda x: ",".join(x))
+    tabla_11 = tbl1.groupby("_c0")["_c4"].apply(lambda x: ",".join(x)).reset_index()
+    tabla_11["_c4"] = tabla_11["_c4"].str.split(",").apply(sorted).apply(lambda x: ",".join(x))
     
-    return tabla
+    return tabla_11
 
 
 def pregunta_12():
@@ -233,11 +232,11 @@ def pregunta_12():
     """
     tbl2["_c5a"] = tbl2["_c5a"].astype(str)
     tbl2["_c5b"] = tbl2["_c5b"].astype(str)
-    tabla = tbl2.groupby("_c0").apply(lambda x: ",".join(x["_c5a"] + ":" + x["_c5b"])).reset_index()
-    tabla.columns = ["_c0", "_c5"]
-    tabla["_c5"] = tabla["_c5"].str.split(",").apply(sorted).apply(lambda x: ",".join(x))
+    tabla_12 = tbl2.groupby("_c0").apply(lambda x: ",".join(x["_c5a"] + ":" + x["_c5b"])).reset_index()
+    tabla_12.columns = ["_c0", "_c5"]
+    tabla_12["_c5"] = tabla_12["_c5"].str.split(",").apply(sorted).apply(lambda x: ",".join(x))
 
-    return tabla
+    return tabla_12
 
 
 def pregunta_13():
@@ -255,9 +254,9 @@ def pregunta_13():
     Name: _c5b, dtype: int64
     """
     tbl2["_c5b"] = tbl2["_c5b"].astype("int64")
-    suma = tbl0.merge(tbl2, on="_c0").groupby("_c1")["_c5b"].sum()
+    suma_13 = tbl0.merge(tbl2, on="_c0").groupby("_c1")["_c5b"].sum()
 
-    return suma
+    return suma_13
 
 # def main():
     # print(pregunta_01())
