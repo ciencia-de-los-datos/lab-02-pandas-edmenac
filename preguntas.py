@@ -2,7 +2,6 @@
 Laboratorio - Manipulación de Datos usando Pandas
 -----------------------------------------------------------------------------------------
 
-
 Este archivo contiene las preguntas que se van a realizar en el laboratorio.
 
 Utilice los archivos `tbl0.tsv`, `tbl1.tsv` y `tbl2.tsv`, para resolver las preguntas.
@@ -55,8 +54,8 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    cantidad_registros = tbl0["_c1"].value_counts().reset_index(drop=True)
-    
+    cantidad_registros = tbl0["_c1"].value_counts().sort_index()
+
     return cantidad_registros
 
 
@@ -72,7 +71,7 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    promedio = tbl0.groupby("_c1")["_c2"].mean().reset_index(drop=True)
+    promedio = tbl0.groupby("_c1")["_c2"].mean().sort_index()
     
     return promedio
 
@@ -164,9 +163,12 @@ def pregunta_09():
     39   39   E    5  1998-01-26  1998
 
     """
-    tbl0['year'] = tbl0['_c3'].str.split('-').str[0]
+    tabla = tbl0.copy()
+    # tabla['year'] = tabla['_c3'].str[:4].astype(int)
+    # tbl0["year"] = tbl0["_c3"].str[:4]
+    tabla["year"] = tabla["_c3"].str.split("-").str.get(0)
     
-    return tbl0
+    return tabla
 
 
 def pregunta_10():
@@ -186,7 +188,8 @@ def pregunta_10():
     tbl0["_c2"] = tbl0["_c2"].astype(str)
     tabla = tbl0.groupby("_c1")["_c2"].apply(lambda x: ":".join(x)).reset_index()
     tabla["_c2"] = tabla["_c2"].str.split(":").apply(sorted).apply(lambda x: ":".join(x))
-    
+    tabla.set_index("_c1", inplace=True)
+
     return tabla
 
 
@@ -251,25 +254,25 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
-    tbl2["_c5b"] = tbl2["_c5b"].astype(int)
+    tbl2["_c5b"] = tbl2["_c5b"].astype("int64")
     suma = tbl0.merge(tbl2, on="_c0").groupby("_c1")["_c5b"].sum()
 
     return suma
 
 # def main():
-#     print(pregunta_01())
-#     print(pregunta_02())
-#     print(pregunta_03())
-#     print(pregunta_04())
-#     print(pregunta_05())
-#     print(pregunta_06())
-#     print(pregunta_07())
-#     print(pregunta_08())
-#     print(pregunta_09())
-#     print(pregunta_10())
-#     print(pregunta_11())
-#     print(pregunta_12())
-#     print(pregunta_13())
+    # print(pregunta_01())
+    # print(pregunta_02())
+    # print(pregunta_03())
+    # print(pregunta_04())
+    # print(pregunta_05())
+    # print(pregunta_06())
+    # print(pregunta_07())
+    # print(pregunta_08())
+    # print(pregunta_09())
+    # print(pregunta_10())
+    # print(pregunta_11())
+    # print(pregunta_12())
+    # print(pregunta_13())
 
 def main():
     pregunta_01()
