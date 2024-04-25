@@ -19,7 +19,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 01
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 01
         timeout: 1
         max-score: 1
@@ -28,7 +28,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 02
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 02
         timeout: 1
         max-score: 1
@@ -37,7 +37,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 03
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 03
         timeout: 1
         max-score: 1
@@ -46,7 +46,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 04
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 04
         timeout: 1
         max-score: 1
@@ -55,7 +55,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 05
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 05
         timeout: 1
         max-score: 1
@@ -64,7 +64,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 06
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 06
         timeout: 1
         max-score: 1
@@ -73,7 +73,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 07
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 07
         timeout: 1
         max-score: 1
@@ -82,7 +82,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 08
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 08
         timeout: 1
         max-score: 1
@@ -91,7 +91,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 09
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 09
         timeout: 1
         max-score: 1
@@ -100,7 +100,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 10
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 10
         timeout: 1
         max-score: 1
@@ -109,7 +109,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 11
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 11
         timeout: 1
         max-score: 1
@@ -118,7 +118,7 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 12
-        setup-command: pip3 install pandas==1.1.5
+        setup-command: pip3 install pandas
         command: python3 tests.py 12
         timeout: 1
         max-score: 1
@@ -127,8 +127,8 @@ jobs:
       uses: education/autograding-command-grader@v1
       with:
         test-name: Pregunta 13
-        setup-command: pip3 install pandas==1.1.5
-        command: python3 tests.py
+        setup-command: pip3 install pandas
+        command: python3 tests.py 13
         timeout: 1
         max-score: 1
     - name: Autograding Reporter
@@ -149,3 +149,4 @@ jobs:
         PREGUNTA-13_RESULTS: "${{steps.pregunta-13.outputs.result}}"
       with:
         runners: pregunta-01,pregunta-02,pregunta-03,pregunta-04,pregunta-05,pregunta-06,pregunta-07,pregunta-08,pregunta-09,pregunta-10,pregunta-11,pregunta-12,pregunta-13
+        
